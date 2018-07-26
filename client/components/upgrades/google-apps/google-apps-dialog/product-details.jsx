@@ -32,19 +32,19 @@ class GoogleAppsProductDetails extends Component {
 			return (
 				<Fragment>
 					<del>
-						{ translate( '%(monthlyPrice)s per user /month', {
+						{ translate( '%(monthlyPrice)s per user / month', {
 							args: { monthlyPrice: this.props.monthlyPrice },
 						} ) }
 					</del>
 					<strong>
 						{ /* Do not translate this string as it is a part of an abtest. */ }
-						{ this.props.discountMonthlyPrice } per user /month
+						{ this.props.discountMonthlyPrice } per user / month
 					</strong>
 				</Fragment>
 			);
 		}
 
-		return translate( '%(monthlyPrice)s per user /month', {
+		return translate( '%(monthlyPrice)s per user / month', {
 			args: { monthlyPrice: this.props.monthlyPrice },
 		} );
 	}
