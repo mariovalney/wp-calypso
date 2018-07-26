@@ -12,6 +12,7 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import { localize } from 'i18n-calypso';
+import Badge from 'components/badge';
 
 class GoogleAppsProductDetails extends Component {
 	static propTypes = {
@@ -31,19 +32,19 @@ class GoogleAppsProductDetails extends Component {
 			return (
 				<Fragment>
 					<del>
-						{ translate( '%(monthlyPrice)s per user / month', {
+						{ translate( '%(monthlyPrice)s per user /month', {
 							args: { monthlyPrice: this.props.monthlyPrice },
 						} ) }
 					</del>
 					<strong>
 						{ /* Do not translate this string as it is a part of an abtest. */ }
-						{ this.props.discountMonthlyPrice } per user / month
+						{ this.props.discountMonthlyPrice } per user /month
 					</strong>
 				</Fragment>
 			);
 		}
 
-		return translate( '%(monthlyPrice)s per user / month', {
+		return translate( '%(monthlyPrice)s per user /month', {
 			args: { monthlyPrice: this.props.monthlyPrice },
 		} );
 	}
@@ -55,10 +56,10 @@ class GoogleAppsProductDetails extends Component {
 		}
 
 		return (
-			<h5 className="google-apps-dialog__promotional-copy">
+			<div className="google-apps-dialog__promotional-copy">
 				LIMITED-TIME ONLY: { this.props.discountAnnualPrice } FOR THE FIRST YEAR
-				<span className="google-apps-dialog__promotional-copy-percent">42% OFF</span>
-			</h5>
+				<Badge type="succes">42% OFF</Badge>
+			</div>
 		);
 	}
 
@@ -83,10 +84,10 @@ class GoogleAppsProductDetails extends Component {
 				} ) }
 			>
 				<div className="google-apps-dialog__product-intro">
-					<h3 className="google-apps-dialog__product-name">
+					<div className="google-apps-dialog__product-name">
 						{ /* Intentionally not translable as it is a brand name and Google keeps it in English */ }
 						<span className="google-apps-dialog__product-logo">G Suite</span>
-					</h3>
+					</div>
 
 					<p>
 						{ translate(
@@ -95,15 +96,15 @@ class GoogleAppsProductDetails extends Component {
 						) }
 					</p>
 
-					<h4 className="google-apps-dialog__price-per-user">{ this.renderPrice() }</h4>
+					<div className="google-apps-dialog__price-per-user">{ this.renderPrice() }</div>
 
-					<h5 className="google-apps-dialog__billing-period">{ this.renderPeriod() }</h5>
+					<div className="google-apps-dialog__billing-period">{ this.renderPeriod() }</div>
 
 					{ this.renderPromotionalCopy() }
 				</div>
 
-				<div className="google-apps-dialog__product-features">
-					<h5 className="google-apps-dialog__product-feature">
+				<ul className="google-apps-dialog__product-features">
+					<li className="google-apps-dialog__product-feature">
 						<img src="/calypso/images/g-suite/logo_gmail_48dp.svg" />
 						<p>
 							{ translate( 'Professional email {{nowrap}}(@%(domain)s){{/nowrap}}', {
@@ -111,23 +112,23 @@ class GoogleAppsProductDetails extends Component {
 								components: { nowrap: <span className="google-apps-dialog__domain" /> },
 							} ) }
 						</p>
-					</h5>
+					</li>
 
-					<h5 className="google-apps-dialog__product-feature">
+					<li className="google-apps-dialog__product-feature">
 						<img src="/calypso/images/g-suite/logo_drive_48dp.svg" />
 						<p>{ translate( '30GB Online File Storage' ) }</p>
-					</h5>
+					</li>
 
-					<h5 className="google-apps-dialog__product-feature">
+					<li className="google-apps-dialog__product-feature">
 						<img src="/calypso/images/g-suite/logo_docs_48dp.svg" />
 						<p>{ translate( 'Docs, spreadsheets, and more' ) }</p>
-					</h5>
+					</li>
 
-					<h5 className="google-apps-dialog__product-feature">
+					<li className="google-apps-dialog__product-feature">
 						<img src="/calypso/images/g-suite/logo_hangouts_48px.png" />
 						<p>{ translate( 'Video and voice calls' ) }</p>
-					</h5>
-				</div>
+					</li>
+				</ul>
 			</div>
 		);
 	}
