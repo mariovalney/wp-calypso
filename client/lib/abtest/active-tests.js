@@ -122,4 +122,12 @@ export default {
 		},
 		defaultVariation: 'no',
 	},
+	gSuiteDiscount: {
+		datestamp: '20180803',
+		variations: {
+			control: 50,
+			discount: 50,
+		},
+		defaultVariation: 'control',
+	},
 };
