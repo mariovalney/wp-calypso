@@ -47,7 +47,7 @@ export class EditorSharingPublicizeConnection extends React.Component {
 			( post &&
 				connection &&
 				includes( PostMetadata.publicizeSkipped( post ), connection.keyring_connection_ID ) ) ||
-			( connection.service === 'facebook' && ! connection.is_additional_external_user )
+			( connection.service === 'facebook' && ! this.isAdditionalExternalUser( connection ) )
 		);
 	};
 
