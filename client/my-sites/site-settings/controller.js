@@ -28,6 +28,7 @@ import { SITES_ONCE_CHANGED } from 'state/action-types';
 import { setSection } from 'state/ui/actions';
 import { setImportingFromSignupFlow, setImportOriginSiteDetails } from 'state/importer-nux/actions';
 import { decodeURIComponentIfValid } from 'lib/url';
+import { getSiteFragment } from 'lib/route';
 
 function canDeleteSite( state, siteId ) {
 	const canManageOptions = canCurrentUser( state, siteId, 'manage_options' );
@@ -50,7 +51,13 @@ function canDeleteSite( state, siteId ) {
 	return true;
 }
 
-export function redirectToGeneral() {
+export function redirectToGeneral( context ) {
+	const site = getSiteFragment( context.path );
+
+	if ( site ) {
+		return page.redirect( `/settings/general/${ site }` );
+	}
+
 	page.redirect( '/settings/general' );
 }
 

@@ -29,7 +29,8 @@ import { reasonComponents as reasons } from './disconnect-site';
 import { setScroll, siteSettings } from 'my-sites/site-settings/settings-controller';
 
 export default function() {
-	page( '/settings', siteSelection, redirectToGeneral );
+	page( '/settings/general', siteSelection, sites, makeLayout, clientRender );
+
 	page(
 		'/settings/general/:site_id',
 		siteSelection,
@@ -137,5 +138,5 @@ export default function() {
 		clientRender
 	);
 
-	page( '/settings/:section', legacyRedirects, siteSelection, sites, makeLayout, clientRender );
+	page( '/settings/:section', legacyRedirects, redirectToGeneral );
 }
